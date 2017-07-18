@@ -29,4 +29,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(path: ':socialwalletsdk')
 //    compile 'com.solitondigital:SocialWalletAndroidSDK:1.0.0'
+//    compile 'com.solitondigital:socialwalletsdk:1.0.1'
+
+
 }
