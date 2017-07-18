@@ -24,7 +24,7 @@ ADDED from /Users/alexleow/StudioProjects/SocialWalletAndroidSDK/app/src/main/An
 application
 ADDED from /Users/alexleow/StudioProjects/SocialWalletAndroidSDK/app/src/main/AndroidManifest.xml:8:5-22:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/alexleow/.android/build-cache/63e706a2d5f03221246fc1aed9ca45085b33d657/output/AndroidManifest.xml:9:5-20
-MERGED from [com.solitondigital:socialwalletsdk:1.0.0] /Users/alexleow/StudioProjects/SocialWalletAndroidSDK/socialwalletsdk/build/intermediates/bundles/default/AndroidManifest.xml:11:5-15:19
+MERGED from [com.solitondigital:socialwalletsdk:1.0.1] /Users/alexleow/StudioProjects/SocialWalletAndroidSDK/socialwalletsdk/build/intermediates/bundles/default/AndroidManifest.xml:11:5-15:19
 MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/alexleow/.android/build-cache/3ca4a9962d834ce368b0c2f6ae13cacf755c0bc9/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-v4:25.3.1] /Users/alexleow/.android/build-cache/53d9d765cc4c6d186eebea1946cee2b256f2fbb2/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-fragment:25.3.1] /Users/alexleow/.android/build-cache/e6df0e4215062b899355974e931a0375ed7ff30b/output/AndroidManifest.xml:29:5-20
@@ -63,7 +63,7 @@ ADDED from /Users/alexleow/StudioProjects/SocialWalletAndroidSDK/app/src/main/An
 uses-sdk
 INJECTED from /Users/alexleow/StudioProjects/SocialWalletAndroidSDK/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/alexleow/.android/build-cache/63e706a2d5f03221246fc1aed9ca45085b33d657/output/AndroidManifest.xml:5:5-7:41
-MERGED from [com.solitondigital:socialwalletsdk:1.0.0] /Users/alexleow/StudioProjects/SocialWalletAndroidSDK/socialwalletsdk/build/intermediates/bundles/default/AndroidManifest.xml:7:5-9:41
+MERGED from [com.solitondigital:socialwalletsdk:1.0.1] /Users/alexleow/StudioProjects/SocialWalletAndroidSDK/socialwalletsdk/build/intermediates/bundles/default/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/alexleow/.android/build-cache/3ca4a9962d834ce368b0c2f6ae13cacf755c0bc9/output/AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:support-v4:25.3.1] /Users/alexleow/.android/build-cache/53d9d765cc4c6d186eebea1946cee2b256f2fbb2/output/AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:support-fragment:25.3.1] /Users/alexleow/.android/build-cache/e6df0e4215062b899355974e931a0375ed7ff30b/output/AndroidManifest.xml:21:5-23:60
