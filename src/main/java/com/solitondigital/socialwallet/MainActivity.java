@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity{
     TextView txtOrderId;
     TextView txtItemDesc;
     TextView txtAmount;
+    Button btnPay;
+    Button btnNewPurchase;
 
     LinearLayout paymentIdLayout;
     TextView txtPaymentId;
@@ -42,7 +44,8 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        final Button btnPay = (Button)findViewById(R.id.btnPay);
+        btnPay = (Button)findViewById(R.id.btnPay);
+        btnNewPurchase = (Button)findViewById(R.id.btnNewPurchase);
         txtMerchant = (TextView)findViewById(R.id.merchant);
         txtOrderId = (TextView)findViewById(R.id.orderID);
         txtItemDesc = (TextView)findViewById(R.id.itemDesc);
@@ -59,21 +62,33 @@ public class MainActivity extends AppCompatActivity{
         txtAmount.setText(amount);
         paymentIdLayout.setVisibility(View.GONE);
         statusLayout.setVisibility(View.GONE);
-
+        btnPay.setVisibility(View.VISIBLE);
+        btnNewPurchase.setVisibility(View.GONE);
 
         setTitle("SocialWallet SDK Demo");
 
-        btnPay.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        btnNewPurchase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
                 String orderID = String.valueOf(System.currentTimeMillis());
                 queryOrderID = orderID;
+                txtOrderId.setText(queryOrderID);
+
+                btnPay.setVisibility(View.VISIBLE);
+                btnNewPurchase.setVisibility(View.GONE);
+
+            }
+        });
+
+        btnPay.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
 
                 PaymentRequest paymentRequest = new PaymentRequest();
                 paymentRequest.merchantCode(merchant_code);
                 paymentRequest.amount(Double.valueOf(amount));
                 paymentRequest.description(item_desc);
-                paymentRequest.orderId(orderID);
+                paymentRequest.orderId(queryOrderID);
                 paymentRequest.apiKey(api_key);
 
                 SocialWallet wallet = new SocialWallet(false);
@@ -104,6 +119,9 @@ public class MainActivity extends AppCompatActivity{
                 {
                     txtStatus.setText("Payment error");
                 }
+
+                btnPay.setVisibility(View.GONE);
+                btnNewPurchase.setVisibility(View.VISIBLE);
             }
         };
     }
