@@ -1,16 +1,22 @@
-# SocialWallet-Android-SDK-Demo
+# SocialWallet-Android-SDK And Sample Code
 
-## Add the SDK to Your Project
+## 1) Pre Requisites
+
+- Android Studio
+- Test Merchant Code, API Key and Username/PIN (please email sdk@solitondigital.io to obtain)
+
+## 2) Adding the Social Wallet SDK to Your Project
 
 The Social Wallet Android SDK is now available at [JCenter Repository](https://bintray.com/solitondigital/SocialWalletAndroidSDK/SocialWalletAndroidSDK). The latest version is available via `jcenter()`:
 
+Add this to your gradle file
 ```groovy
 compile 'com.solitondigital:socialwalletsdk:1.0.3'
 ```
 
-## Usage
+## 3) Usage
 
-### How to make payment
+### I) How to make payment
 Create a new object PaymentRequest and initialise it with 
 - api_key
 - merchant_code
@@ -52,7 +58,7 @@ public class MainActivity extends AppCompatActivity{
 }
 ```
 
-### How to listen to payment event
+### II) How to listen to payment event
 
 Set `PaymentRequestCallback` to `SocialWallet` Payment request event listener. `onPaymentReceived` method will be called upon any payment event.
 
@@ -101,4 +107,8 @@ public class MainActivity extends AppCompatActivity{
     }
 }
 ```
-Status = 2 : Successfull Payment
+Status = 2 : Payment Succesful (Please email sdk@solitondigital.io for complete list of status codes)
+
+## 4) Moving into Production
+
+Please email sdk@solitondigital.io to obtain production Merchant Code and API Key when you are ready to go live
