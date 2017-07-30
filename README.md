@@ -39,8 +39,6 @@ public class MainActivity extends AppCompatActivity{
         btnPay.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
-                String order_id = String.valueOf(System.currentTimeMillis());
-
                 PaymentRequest paymentRequest = new PaymentRequest();
                 paymentRequest.merchantCode(merchant_code);
                 paymentRequest.amount(Double.valueOf(amount));
@@ -48,9 +46,15 @@ public class MainActivity extends AppCompatActivity{
                 paymentRequest.orderId(order_id);
                 paymentRequest.apiKey(api_key);
 
-                SocialWallet wallet = new SocialWallet(production);
 
-                wallet.OneTimePayment(mActivity, paymentRequest);
+                Intent socialWalletIntent = new Intent(getApplicationContext(),SocialWalletActivity.class);
+
+                Bundle args = new Bundle();
+                args.putSerializable("paymentRequest", paymentRequest);
+                socialWalletIntent.putExtras(args);
+                socialWalletIntent.putExtra("production",false);
+
+                startActivityForResult(socialWalletIntent,PAYMENT_REQUEST_CODE);
 
             }
         });
@@ -60,7 +64,7 @@ public class MainActivity extends AppCompatActivity{
 
 ### II) How to listen to payment event
 
-Set `PaymentRequestCallback` to `SocialWallet` Payment request event listener. `onPaymentReceived` method will be called upon any payment event.
+`onActivityResult` method will be called upon any payment event.
 
 ```java
 import com.solitondigital.socialwalletsdk.SocialWallet;
@@ -70,40 +74,36 @@ import com.solitondigital.socialwalletsdk.model.PaymentRequestResult;
 public class MainActivity extends AppCompatActivity{
 
      @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
-        final Button btnPay = (Button)findViewById(R.id.btnPay);
-        btnPay.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-            
-                SocialWallet wallet = new SocialWallet(false);
-                wallet.setPaymentRequestEventListener(PaymentRequestCallback());
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-            }
-        });
-    }
-    
-    private PaymentRequestCallback PaymentRequestCallback(){
-        return new PaymentRequestCallback() {
+        if(requestCode == PAYMENT_REQUEST_CODE)
+        {
+            if(resultCode == RESULT_OK)
+            {
+                String status = data.getStringExtra("status");
+                String payment_id = data.getStringExtra("payment_id");
+                String order_id = data.getStringExtra("order_id");
+                String amount = data.getStringExtra("amount");
+                String description = data.getStringExtra("description");
+                String request_time = data.getStringExtra("request_time");
+                String user_name = data.getStringExtra("user_name");
+                String emoney_txid = data.getStringExtra("emoney_txid");
 
-            @Override
-            public void onPaymentReceived(PaymentRequestResult callbackResult) {
-                txtMerchant.setText(callbackResult.getMerchant());
-                txtOrderId.setText(callbackResult.getOrderId());
                 paymentIdLayout.setVisibility(View.VISIBLE);
-                txtPaymentId.setText(callbackResult.getPaymentId());
-                statusLayout.setVisibility(View.VISIBLE);
-
-                if(callbackResult.getStatus().equalsIgnoreCase("2")) {
-                    txtStatus.setText("Successfull payment");
-                }
-                else
-                {
-                    txtStatus.setText("Payment error");
-                }
+                txtPaymentId.setText(payment_id);
+                txtStatus.setText("Successfull payment");
             }
-        };
+            else
+            {
+                txtStatus.setText("Payment error");
+            }
+
+
+            statusLayout.setVisibility(View.VISIBLE);
+            btnPay.setVisibility(View.GONE);
+            btnNewPurchase.setVisibility(View.VISIBLE);
+        }
     }
 }
 ```
