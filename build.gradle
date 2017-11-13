@@ -1,5 +1,32 @@
 apply plugin: 'com.android.application'
 
+buildscript {
+    repositories {
+        maven { url "http://dl.bintray.com/populov/maven" }
+        mavenCentral()
+        jcenter()
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath "io.realm:realm-gradle-plugin:1.1.0"
+        classpath 'com.google.gms:google-services:3.0.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url "http://dl.bintray.com/populov/maven" }
+        maven { url "https://jitpack.io" }
+        mavenCentral()
+        jcenter()
+
+    }
+}
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
