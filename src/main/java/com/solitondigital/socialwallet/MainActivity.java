@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity{
             }
             else
             {
-                txtStatus.setText("Payment error");
+                txtStatus.setText("Payment cancelled");
             }
 
 
