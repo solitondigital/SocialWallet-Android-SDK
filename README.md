@@ -11,7 +11,7 @@ The Social Wallet Android SDK is now available at [JCenter Repository](https://b
 
 Add this to your gradle file
 ```groovy
-compile 'com.solitondigital:socialwalletsdk:1.0.7'
+compile 'com.solitondigital:socialwalletsdk:1.0.8'
 ```
 
 ## 3) Usage
